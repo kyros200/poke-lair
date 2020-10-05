@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Typography, Paper, Button } from '@material-ui/core';
 import P from '../helper/pokeHelper';
+import Type from '../helper/pokeTypeHelper'
 
 function PokemonCard(props) {
     const [pokemon, setPokemon] = useState({});
@@ -9,14 +10,12 @@ function PokemonCard(props) {
         props.setLoading(true);
         P.getPokemon(props.id)
         .then((p) => {
-            console.log(p);
             setPokemon(p);
             props.setLoading(false);
         })
     }, [])
 
-    return (
-        <Grid item xs={12} md={3}>
+    return pokemon?.sprites ? <Grid item xs={12} md={3} style={{marginBottom:"12px"}}>
             <Paper>
                 <Grid container direction="column" alignItems="center">
                     <Grid item>
@@ -28,17 +27,27 @@ function PokemonCard(props) {
                             alt={`${pokemon.name}`}>
                         </img>
                     </Grid>
+                    <Grid container item justify="center" spacing={1} >
+                        {pokemon.types?.map((type) => 
+                            <Grid key={type} item>
+                                <img height="16px" src={Type?.typeImgs[type]} alt={type} />
+                            </Grid>
+                        )}
+                    </Grid>
                     <Grid item>
                         <Typography variant="caption">A partir de</Typography>
+                    </Grid>
+                    <Grid item>
                         <Typography>${P.getPokemonPrice(pokemon, 1)}</Typography>
                     </Grid>
-                    <Button color="primary" onClick={() => props.setLoading(true)}>
-                        Ver Mais
-                    </Button>
+                    <Grid item style={{width:"100%"}}>
+                        <Button style={{}} fullWidth color="primary" variant="contained" onClick={() => {console.log(pokemon); props.setLoading(true)}}>
+                            <Typography variant="caption" style={{textTransform: 'capitalize'}}>Adicionar...</Typography>
+                        </Button>
+                    </Grid>
                 </Grid>
             </Paper>
-        </Grid>
-    );
+        </Grid> : <></>
 }
 
 export default PokemonCard;

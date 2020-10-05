@@ -3,6 +3,8 @@ import { CssBaseline } from '@material-ui/core';
 
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
+import P from './helper/pokeHelper'
+
 import font from './helper/fontHelper.js'
 import Header from './components/Header.js';
 import MainContent from './components/MainContent.js';
@@ -10,8 +12,11 @@ import LoadingModal from './components/common/LoadingModal';
 
 function App() {
 
-    const [theme, setTheme] = useState()
-    // const [type, setType] = useState("normal");
+    const [theme, setTheme] = useState();
+    const [mainFont, setMainFont] = useState("classic");
+    const [type, setType] = useState("normal");
+    const [pokemonList, setPokemonList] = useState([]);
+
     const [loading, setLoading] = useState(false);
 
     const changePageTheme = async (mainFont, mainType) => {
@@ -38,12 +43,28 @@ function App() {
             },
         });
         setTheme(newTheme);
-        console.log(newTheme);
+        // console.log(newTheme);
     }
 
     useEffect(() => {
-        changePageTheme(`classic`); //This line is a gambiarra, just to get the classic Pokémon .ttf working.
+        changePageTheme(mainFont, type);
+    }, [mainFont]);
+
+    useEffect(() => {
+        //When Type Changes, get all pokemons from that type.
+        setLoading(true);
+        P.getAllPokemonByType(type)
+        .then((list) => {
+            setPokemonList(list);
+            setLoading(false);
+        })
+        changePageTheme(mainFont, type);
+    }, [type]);
+
+    useEffect(() => {
+        //This is a gambiarra, just to get the classic Pokémon .ttf working.
         changePageTheme(`galarian`);
+        changePageTheme(`classic`); 
     }, []);
 
     return (
@@ -52,10 +73,11 @@ function App() {
             <LoadingModal open={loading} close={() => setLoading(false)} />
 
             <Header
-                handleFontChange={(value) => changePageTheme(value)}
+                handleFontChange={(value) => setMainFont(value)}
+                handleTypeChange={(value) => setType(value)}
             />
 
-            <MainContent setLoading={setLoading} />
+            <MainContent pokemonList={pokemonList} setLoading={setLoading} setType={setType} />
         </ThemeProvider>
     );
 }

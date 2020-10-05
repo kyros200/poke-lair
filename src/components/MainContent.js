@@ -7,20 +7,21 @@ import PokemonList from './PokemonList';
 function MainContent(props) {
 
     const [filter, setFilter] = useState({});
-    const [formattedList, setFormattedList] = useState();
+    const [allPokemon, setAllPokemon] = useState([]);
 
     useEffect(() => {
-        setFormattedList([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 150 }, { id: 5 }, { id: 6 }, { id: 7 }])
-    }, [])
+        console.log(props.pokemonList)
+        setAllPokemon(props.pokemonList)
+    }, [props.pokemonList]);
 
     return (
         <Grid container>
-            {/* filtro e lista de cards pokemons */}
+            {/* Name Filter & Pokemon List. Left side of screen */}
             <Grid container item md={9}>
                 <PokemonFilter filter={filter} setFilter={setFilter} />
-                <PokemonList result={formattedList} setLoading={props.setLoading} />
+                <PokemonList result={allPokemon} setLoading={props.setLoading} />
             </Grid>
-            {/* carrinho (desk e mobile) */}
+            {/* Shop Cart (for desktop. Need to think to mobile). Right side of screen (on desktop) */}
             <Grid item md={3}>
                 Carrinho aqui
             </Grid>

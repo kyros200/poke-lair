@@ -33,14 +33,30 @@ const pokeHelper = {
         return fetch(`${API_URL}/pokemon/${id}`)
         .then((result) => result.json())
         .then((pokemon) => {
-            console.log(formatPokemonInfo(pokemon))
             return formatPokemonInfo(pokemon)
         });
     },
+
     getPokemonPrice: (pokemon, level) => {
         //Price is the sum of all base stats. Each level adds 10% of the Pokémon's base experience, rounded down
         const basePrice = pokemon.stats?.reduce((total, stat) => total + stat.value, 0);
         return (basePrice + ((level-1)*pokemon.baseExperience*0.1)).toFixed(0);
+    },
+
+    getAllPokemonByType: (type) => {
+        return fetch(`${API_URL}/type/${type}`)
+        .then((result) => result.json())
+        .then((pokemonList) => {
+            // console.log(pokemonList)
+            const formattedList = pokemonList.pokemon
+                .filter((pokemon) => {
+                    let numberDex = pokemon.pokemon.url.split('/');
+                    numberDex = numberDex[numberDex.length-2]
+                    return numberDex < 810 //Get all Pokemons that is not from Galar
+                })
+                .map((pokemon) => pokemon.pokemon.name)
+            return formattedList;
+        });
     }
 }
 
