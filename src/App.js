@@ -47,10 +47,6 @@ function App() {
     }
 
     useEffect(() => {
-        changePageTheme(mainFont, type);
-    }, [mainFont]);
-
-    useEffect(() => {
         //When Type Changes, get all pokemons from that type.
         setLoading(true);
         P.getAllPokemonByType(type)
@@ -59,7 +55,7 @@ function App() {
             setLoading(false);
         })
         changePageTheme(mainFont, type);
-    }, [type]);
+    }, [mainFont, type]);
 
     useEffect(() => {
         //This is a gambiarra, just to get the classic Pokémon .ttf working.

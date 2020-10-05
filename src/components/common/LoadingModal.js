@@ -1,5 +1,6 @@
 import React from 'react';
 import { Dialog } from '@material-ui/core';
+import loadingGif from '../../imgs/loading.gif'
 
 function LoadingModal(props) {
     return (
@@ -7,7 +8,7 @@ function LoadingModal(props) {
             open={props.open}
             onClose={props.close}
         >
-            <img width="128px" src="https://i.pinimg.com/originals/4e/a2/3e/4ea23e6339937b95a8aa5cd08eeb3266.gif" alt="loading..." />
+            <img width="128px" src={loadingGif} alt="loading..." />
         </Dialog>
     );
 }

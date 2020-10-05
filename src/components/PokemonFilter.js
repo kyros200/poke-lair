@@ -1,12 +1,29 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, InputAdornment, Paper, TextField } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 
 function PokemonFilter(props) {
-  return (
-    <Grid container>
-      <Typography>Aqui fica o Filter</Typography>
-    </Grid>
-  );
+    return (
+        <Grid item style={{width:"100%", margin: "12px"}}>
+            <Paper elevation={12}>
+                <TextField
+                    fullWidth
+                    placeholder="Nome ou Dex..."
+                    value={props.filter}
+                    onChange={(e) => {
+                        props.setFilter(e.target.value)
+                    }}
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <SearchIcon />
+                            </InputAdornment>
+                        )
+                    }}
+                />
+            </Paper>
+        </Grid>
+    );
 }
 
 export default PokemonFilter;

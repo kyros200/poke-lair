@@ -9,7 +9,7 @@ function PokemonList(props) {
                 <Typography>Resultado da Busca</Typography>
             </Grid>
             <Grid container justify="space-evenly" item spacing={1}>
-                {props.result?.map((pokemon) => <PokemonCard key={pokemon} id={pokemon} setLoading={props.setLoading} />)}
+                {props.result?.map((pokemon) => <PokemonCard key={pokemon.name} pokemon={pokemon} setLoading={props.setLoading} />)}
             </Grid>
         </Grid>
     );

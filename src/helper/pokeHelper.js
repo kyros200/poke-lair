@@ -47,15 +47,20 @@ const pokeHelper = {
         return fetch(`${API_URL}/type/${type}`)
         .then((result) => result.json())
         .then((pokemonList) => {
-            // console.log(pokemonList)
-            const formattedList = pokemonList.pokemon
-                .filter((pokemon) => {
+            return pokemonList.pokemon
+                .map((pokemon) => {
                     let numberDex = pokemon.pokemon.url.split('/');
                     numberDex = numberDex[numberDex.length-2]
-                    return numberDex < 810 //Get all Pokemons that is not from Galar
+                    //I know, very sad way to get the Pokémon Dex Number...
+
+                    return {
+                        name: pokemon.pokemon.name,
+                        dex: numberDex
+                    }
                 })
-                .map((pokemon) => pokemon.pokemon.name)
-            return formattedList;
+                .filter((pokemon) => {
+                    return pokemon.dex < 810 //Get all Pokemons that is not from Galar
+                })
         });
     }
 }

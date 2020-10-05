@@ -8,14 +8,15 @@ function PokemonCard(props) {
 
     useEffect(() => {
         props.setLoading(true);
-        P.getPokemon(props.id)
+        P.getPokemon(props.pokemon.name)
         .then((p) => {
             setPokemon(p);
             props.setLoading(false);
         })
     }, [])
 
-    return pokemon?.sprites ? <Grid item xs={12} md={3} style={{marginBottom:"12px"}}>
+    return pokemon?.sprites ? 
+        <Grid item xs={12} md={3} style={{marginBottom:"12px"}}>
             <Paper>
                 <Grid container direction="column" alignItems="center">
                     <Grid item>
