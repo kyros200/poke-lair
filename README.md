@@ -7,7 +7,7 @@ PokeLair is supposed to be a ***shady*** store where the Galarians (*People from
 
 So, as a user, you can shop on PokeLair to choose between all Pokémon from all other regions (*until #809 on National Dex*) and form the best team you ever dreamed, as long as you can afford of course.
 
-***Avaiable in Galarian and Portuguese***
+***Avaiable in Galarian and English only***
 
 ### Usage
 *Under Construction...*

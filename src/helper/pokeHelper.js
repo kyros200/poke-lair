@@ -37,10 +37,22 @@ const pokeHelper = {
         });
     },
 
-    getPokemonPrice: (pokemon, level) => {
+    getMove: (url) => {
+        return fetch(url)
+        .then((result) => result.json())
+        .then((move) => {
+            return move
+        });
+    },
+
+    getPokemonPrice: (pokemon, level = 1, isShiny = false, moves = []) => {
         //Price is the sum of all base stats. Each level adds 10% of the Pokémon's base experience, rounded down
+        const movesPrice = moves.map(m => m.price).reduce((a, b) => a + b, 0)
         const basePrice = pokemon.stats?.reduce((total, stat) => total + stat.value, 0);
-        return (basePrice + ((level-1)*pokemon.baseExperience*0.1)).toFixed(0);
+        let finalPrice = (basePrice + movesPrice + ((level-1)*pokemon.baseExperience*0.1)).toFixed(0);
+        if (isShiny)
+            finalPrice *= 3;
+        return finalPrice;
     },
 
     getAllPokemonByType: (type) => {
@@ -59,7 +71,7 @@ const pokeHelper = {
                     }
                 })
                 .filter((pokemon) => {
-                    return pokemon.dex < 810 //Get all Pokemons that is not from Galar
+                    return pokemon.dex < 810 //Get all Pokemons that is not from Galar (Thus, until Alola Region)
                 })
         });
     }

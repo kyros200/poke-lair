@@ -71,7 +71,7 @@ function Header(props) {
                             </MenuItem>
                             <MenuItem style={{ fontFamily: "classic" }} value={"classic"}>
                                 <Typography variant="caption">
-                                    Portuguese
+                                    English
                                 </Typography>
                             </MenuItem>
                         </Select>

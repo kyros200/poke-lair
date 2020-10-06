@@ -8,6 +8,7 @@ function MainContent(props) {
 
     const [filter, setFilter] = useState("");
     const [allPokemon, setAllPokemon] = useState([]);
+    // const [pokemonTeam, setPokemonTeam] = useState([]);
 
     useEffect(() => {
         setAllPokemon(props.pokemonList);
@@ -27,6 +28,7 @@ function MainContent(props) {
                         allPokemon.filter((pokemon) => pokemon.name.toLowerCase().includes(filter.toLowerCase()))
                     } 
                     setLoading={props.setLoading} 
+                    setSelectedPokemon={props.setSelectedPokemon}
                 />
             </Grid>
             {/* Shop Cart (for desktop. Need to think to mobile). Right side of screen (on desktop) */}

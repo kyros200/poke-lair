@@ -36,19 +36,28 @@ function PokemonCard(props) {
                         )}
                     </Grid>
                     <Grid item>
-                        <Typography variant="caption">A partir de</Typography>
+                        <Typography variant="caption">Starting at</Typography>
                     </Grid>
                     <Grid item>
-                        <Typography>${P.getPokemonPrice(pokemon, 1)}</Typography>
+                        <Typography>${P.getPokemonPrice(pokemon)}</Typography>
                     </Grid>
                     <Grid item style={{width:"100%"}}>
-                        <Button style={{}} fullWidth color="primary" variant="contained" onClick={() => {console.log(pokemon); props.setLoading(true)}}>
-                            <Typography variant="caption" style={{textTransform: 'capitalize'}}>Adicionar...</Typography>
+                        <Button 
+                            fullWidth 
+                            color="primary" 
+                            variant="contained" 
+                            onClick={() => {
+                                console.log(pokemon);
+                                props.setSelectedPokemon(pokemon)
+                            }}
+                        >
+                            <Typography variant="caption" style={{textTransform: 'capitalize'}}>Add...</Typography>
                         </Button>
                     </Grid>
                 </Grid>
             </Paper>
-        </Grid> : <></>
+        </Grid> 
+        : <></>
 }
 
 export default PokemonCard;

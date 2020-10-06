@@ -9,6 +9,7 @@ import font from './helper/fontHelper.js'
 import Header from './components/Header.js';
 import MainContent from './components/MainContent.js';
 import LoadingModal from './components/common/LoadingModal';
+import PokemonDialog from './components/PokemonDialog'
 
 function App() {
 
@@ -18,6 +19,9 @@ function App() {
     const [pokemonList, setPokemonList] = useState([]);
 
     const [loading, setLoading] = useState(false);
+
+    const [openDialog, setOpenDialog] = useState(false);
+    const [selectedPokemon, setSelectedPokemon] = useState({});
 
     const changePageTheme = async (mainFont, mainType) => {
         const newTheme = await createMuiTheme({
@@ -66,6 +70,8 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
+
+            <PokemonDialog setLoading={setLoading} pokemon={selectedPokemon} open={openDialog} onClose={() => setOpenDialog(false)} />
             <LoadingModal open={loading} close={() => setLoading(false)} />
 
             <Header
@@ -73,7 +79,7 @@ function App() {
                 handleTypeChange={(value) => setType(value)}
             />
 
-            <MainContent pokemonList={pokemonList} setLoading={setLoading} setType={setType} />
+            <MainContent pokemonList={pokemonList} setLoading={setLoading} setType={setType} setSelectedPokemon={(p) => {setOpenDialog(true); setSelectedPokemon(p);}} />
         </ThemeProvider>
     );
 }
