@@ -5,9 +5,9 @@
 ***Another Disclaimer**: I made some important points on the final of this README.md document. Please read!*
 
 ### Context
-The video-game franchise Pokémon latest game, *Sword* and *Shield* editions (only avaiable on Nintendo Switch), was poor received on the public because they did not feature all existing Pokémon. In the Galar region (where the games takes place), Pokemon in all other regions simply non-existent...
+The video-game franchise Pokémon latest game, *Sword* and *Shield* editions (only avaiable on Nintendo Switch), was poorly received on the public because they did not feature all existing Pokémon. In the Galar region (where the games takes place), Pokemon in all other regions simply don't exist...
 
-***Then comes PokeLair***. Macro Cosmos (the antagonist company of the *Sword* and *Shield* games), the company behind this *shady* site on the dark web, made a store for every Pokémon type (selling Pokémon, what is strictly forbbiden everywhere) where the Galarians (*people from the Galar region*) rely on having only one way to have Pokémon from the other regions (Kanto, Johto, Sinnoh, Alola, ...).
+***Then comes PokeLair***. Macro Cosmos (the antagonist company of the *Sword* and *Shield* games), the company behind this *shady* site on the dark web, made a store for every Pokémon Type (selling Pokémon, what is strictly forbbiden everywhere) where the Galarians (*people from the Galar region*) rely on having only one way to have Pokémon from the other regions (Kanto, Johto, Sinnoh, Alola, ...).
 
 ![logo](https://raw.githubusercontent.com/kyros200/poke-lair/main/src/imgs/logo.png)
 
@@ -24,7 +24,7 @@ yarn start
 ```
 And then access `localhost:3000`
 ### Overview
-**First things first, this is a Galarian site**. If you wish to change to **English** language, please do it so on the upper-right corner of the site.
+**First things first, this is a Galarian site**. If you wish to change to **English** language, please do it on the upper-right corner of the site.
 
 ![Main menu, Normal Store](https://i.imgur.com/5VciKWC.jpg)
 
@@ -36,7 +36,7 @@ This is the Main Page. **You can change wich Type store do you want** on the upp
 
 *Switching to Dark Type Store*
 
-On the right-side you can see your Pokémon team (*currently empty*), and on the left side you can see the options of Pokémon you can put on your team. 
+On the right-side you can see your Pokémon team (*currently empty in the example*), and on the left side you can see the options of Pokémon you can put on your team. 
 
 If you are having problems finding where are your favorite Pokémon, you can use the ***Search*** feature!
 
@@ -74,7 +74,7 @@ Finally, when satisfied, you can Checkout your team to proceed to payment. Click
 
 ![Checkout photo](https://i.imgur.com/owyIWDY.jpg)
 
-*Final screen you show you your Pokémon and the final price before being redirect for payment*
+*Final screen will show your Pokémon and the final price before being redirect for payment*
 
 And thats the overview of the project!
 
@@ -90,7 +90,7 @@ Mobile is functional but is not perfect at all. A lot of code need to be refacto
 
 I had some problems developing this mini-project, and that was all my fault. This section is to tell what I have failed and what I wish I could do more in the future in this one-week sprint.
 
-* Spent too much time researching the flavour and the idea of the site in general. I basically played *Pokémon Sword* game for over 10 hours to get a glimpse of an idea for the site. In total I spent like 2 days just to have a draft.
+* Spent too much time researching the flavor and the idea of the site in general. I basically played *Pokémon Sword* game for some time to get a glimpse of an idea for the site. In total I spent like 2 days just to have a draft.
 * I also spent more time that I was hoping with the PokéAPI. It's simply not intuitive and I had to refactor my code twice just to be generic and to accomodate all necessary things on the project.
 * I wanted to be perfectionist. I was doing a MVP, not a full project, and that was my mistake. As you can see, as the time went on, I just could not worry so much on all the UI details (on the bright side I made every functional feature that I wanted).
 * With all said, I made a theme for every Type of Pokémon, but this theme just changes the primary color on the Material-ui Theme. I made in a generic way, so if I want to add something it should be easy.
