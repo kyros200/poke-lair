@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Select, MenuItem, Typography, Grid, Toolbar, AppBar } from '@material-ui/core';
 import Type from '../helper/pokeTypeHelper';
 
+import logo from '../imgs/logo.png'
+
 function Header(props) {
     const [selectedLanguage, setSelectedLanguage] = useState("classic");
     const [selectedType, setSelectedType] = useState("normal");
@@ -14,6 +16,9 @@ function Header(props) {
                     justify="flex-start"
                     alignItems="center"
                 >
+                    <Grid item>
+                        <img height="40px" src={logo} alt="logo" />
+                    </Grid>
                     <Grid item>
                         <Typography variant="h4" style={{ fontFamily: "galarian" }}>
                             PokeLair

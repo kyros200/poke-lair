@@ -22,6 +22,7 @@ function App() {
 
     const [openDialog, setOpenDialog] = useState(false);
     const [selectedPokemon, setSelectedPokemon] = useState({});
+    const [pokemonTeam, setPokemonTeam] = useState([]);
 
     const changePageTheme = async (mainFont, mainType) => {
         const newTheme = await createMuiTheme({
@@ -71,7 +72,14 @@ function App() {
         <ThemeProvider theme={theme}>
             <CssBaseline />
 
-            <PokemonDialog setLoading={setLoading} pokemon={selectedPokemon} open={openDialog} onClose={() => setOpenDialog(false)} />
+            <PokemonDialog 
+                setLoading={setLoading} 
+                pokemon={selectedPokemon} 
+                open={openDialog} 
+                onClose={() => setOpenDialog(false)} 
+                pokemonTeam={pokemonTeam}
+                setPokemonTeam={setPokemonTeam}
+            />
             <LoadingModal open={loading} close={() => setLoading(false)} />
 
             <Header
@@ -79,7 +87,14 @@ function App() {
                 handleTypeChange={(value) => setType(value)}
             />
 
-            <MainContent pokemonList={pokemonList} setLoading={setLoading} setType={setType} setSelectedPokemon={(p) => {setOpenDialog(true); setSelectedPokemon(p);}} />
+            <MainContent 
+                pokemonList={pokemonList} 
+                setLoading={setLoading} 
+                setType={setType} 
+                setSelectedPokemon={(p) => {setOpenDialog(true); setSelectedPokemon(p);}} 
+                pokemonTeam={pokemonTeam}
+                setPokemonTeam={setPokemonTeam}
+            />
         </ThemeProvider>
     );
 }

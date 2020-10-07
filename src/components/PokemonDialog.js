@@ -30,7 +30,19 @@ function PokemonDialog(props) {
     }
     
     const addToCart = () => {
-        //Adicionar Pokemon no carrinho de fato aqui!
+        props.setPokemonTeam(
+            [
+                ...props.pokemonTeam,
+                {
+                    name: props.pokemon.name,
+                    dex: props.pokemon.dex,
+                    sprite: isShiny ? props.pokemon.sprites.shiny : props.pokemon.sprites.normal,
+                    level: level,
+                    selectedMoves: selectedMoves,
+                    price: P.getPokemonPrice(props.pokemon, level, isShiny, selectedMoves)
+                }
+            ]
+        )
         handleClose();
     }
 
@@ -198,9 +210,10 @@ function PokemonDialog(props) {
                                 color="primary"
                                 variant="contained"
                                 onClick={checkAddToCart}
+                                disabled={props.pokemonTeam.length >= 6}
                             >
                                 <Typography style={{textTransform: 'capitalize'}} variant="caption">
-                                    I choose you!
+                                    {props.pokemonTeam.length >= 6 ? `Team is full!` : `I choose you!`}
                                 </Typography>
                             </Button>
                         </Grid>

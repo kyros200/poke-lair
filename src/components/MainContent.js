@@ -3,12 +3,12 @@ import { Grid } from '@material-ui/core';
 
 import PokemonFilter from './PokemonFilter';
 import PokemonList from './PokemonList';
+import PokemonBag from './PokemonBag';
 
 function MainContent(props) {
 
     const [filter, setFilter] = useState("");
     const [allPokemon, setAllPokemon] = useState([]);
-    // const [pokemonTeam, setPokemonTeam] = useState([]);
 
     useEffect(() => {
         setAllPokemon(props.pokemonList);
@@ -33,7 +33,7 @@ function MainContent(props) {
             </Grid>
             {/* Shop Cart (for desktop. Need to think to mobile). Right side of screen (on desktop) */}
             <Grid item md={3}>
-                Carrinho aqui
+                <PokemonBag pokemonTeam={props.pokemonTeam} setPokemonTeam={props.setPokemonTeam}/>
             </Grid>
         </Grid>
     );
