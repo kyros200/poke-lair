@@ -64,7 +64,7 @@ function PokemonDialog(props) {
     return (
         // Dialog to decide the level and the moves of the selected Pokémon
         <Dialog
-            maxWidth="xl"
+            maxWidth="md"
             open={props.open}
             onClose={handleClose}
         >
@@ -82,7 +82,7 @@ function PokemonDialog(props) {
             </QuestionModal>
             <Grid container>
                 {/* Left Side shows all Pokémon details */}
-                <Grid container item md={8} justify="flex-start" alignItems="center" direction="column">
+                <Grid container item md={7} justify="flex-start" alignItems="center" direction="column">
                     <Grid item>
                         <Typography style={{textTransform: 'capitalize'}} variant="h6">
                             {`${props.pokemon.dex} - ${props.pokemon.name}`}
@@ -103,7 +103,7 @@ function PokemonDialog(props) {
                     </Grid>
                 </Grid>
                 {/* Right Side is where the user selects the desired options for his/her Pokémon to add to his team */}
-                <Grid container item md={4}>
+                <Grid container item md={5}>
                     {/* is Shiny? What is the Pokémon's level? */}
                     <Grid container item xs={12} justify="flex-start">
                         {/* Ask if Pokémon is Shiny (it triple the final price if selected. Shiny are rare to breed, you know) */}

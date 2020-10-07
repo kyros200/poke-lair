@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Grid } from '@material-ui/core';
+import { Dialog, Fab, Grid, Hidden } from '@material-ui/core';
 
 import PokemonFilter from './PokemonFilter';
 import PokemonList from './PokemonList';
 import PokemonBag from './PokemonBag';
 
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+
 function MainContent(props) {
 
     const [filter, setFilter] = useState("");
     const [allPokemon, setAllPokemon] = useState([]);
+    const [cartDialog, setCartDialog] = useState(false);
 
     useEffect(() => {
         setAllPokemon(props.pokemonList);
@@ -31,10 +34,27 @@ function MainContent(props) {
                     setSelectedPokemon={props.setSelectedPokemon}
                 />
             </Grid>
-            {/* Shop Cart (for desktop. Need to think to mobile). Right side of screen (on desktop) */}
-            <Grid item md={3}>
-                <PokemonBag pokemonTeam={props.pokemonTeam} setPokemonTeam={props.setPokemonTeam}/>
-            </Grid>
+            <Hidden smDown>
+                {/* Shop Cart (on desktop) */}
+                <Grid item md={3}>
+                    <PokemonBag pokemonTeam={props.pokemonTeam} setPokemonTeam={props.setPokemonTeam}/>
+                </Grid>
+            </Hidden>
+            <Hidden smUp>
+                <Fab
+                    onClick={() => setCartDialog(true)}
+                    color="primary"
+                    style={{position:"absolute", right:"24px", bottom:"32px"}}
+                >
+                    <ShoppingCartIcon />
+                </Fab>
+                <Dialog
+                    open={cartDialog}
+                    onClose={() => setCartDialog(false)}
+                >
+                    <PokemonBag pokemonTeam={props.pokemonTeam} setPokemonTeam={props.setPokemonTeam}/>
+                </Dialog>
+            </Hidden>
         </Grid>
     );
 }

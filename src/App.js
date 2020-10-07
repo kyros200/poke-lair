@@ -60,6 +60,8 @@ function App() {
             setLoading(false);
         })
         changePageTheme(mainFont, type);
+        //Sad news: Changing type also makes you lose your cart. =(
+        setPokemonTeam([])
     }, [mainFont, type]);
 
     useEffect(() => {

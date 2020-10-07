@@ -17,6 +17,12 @@ function MoveCard(props) {
         setSelected(!selected);
     }
 
+    //You cannot have selected an disabled move option. If its selected and dont have level anymore, it'll be removed from the move list.
+    useEffect(() => {
+        if(props.pokemonLevel < props.move.level && selected)
+            handleClick();
+    }, [props.pokemonLevel])
+
     useEffect(() => {
         P.getMove(props.move?.url)
         .then((m) => {
