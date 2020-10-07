@@ -25,14 +25,48 @@ const formatPokemonInfo = (pokemon) => {
         stats: pokemon.stats.map((s) => {return {stat: s.stat.name, value: s.base_stat}}),
         types: pokemon.types.map((t) => t.type.name),
         baseExperience: pokemon.base_experience,
+        //More Info Here, when Pokemon is clicked
+        details: {
+            evolutions: pokemon.moreInfo.evolutions,
+            height: pokemon.height,
+            weight: pokemon.weight,
+            abilities: pokemon.abilities.map((a) => a.ability.name),
+            flavorText: pokemon.moreInfo.flavorText.flavor_text,
+            growthRate: pokemon.moreInfo.growthRate.name,
+            isLegendary: pokemon.moreInfo.isLegendary,
+        }
     }
+}
+
+const getPokemonEvolutions = async (pokemon) => {
+    const specie = await (await fetch(pokemon.species.url)).json();
+    const evolutionChain = await (await fetch(specie.evolution_chain.url)).json();
+    
+    let info = {
+        flavorText: specie.flavor_text_entries[0],
+        growthRate: specie.growth_rate,
+        isLegendary: specie.is_legendary,
+        evolutions: []
+    };
+    let actualState = evolutionChain.chain;
+    while(true) {
+        if(actualState.evolves_to.length > 0) {
+            info.evolutions.push(actualState.evolves_to[0].species.name)
+            actualState = actualState.evolves_to[0];
+        }
+        else
+            break;
+    }
+
+    return info;
 }
 
 const pokeHelper = {
     getPokemon: (id) => {
         return fetch(`${API_URL}/pokemon/${id}`)
         .then((result) => result.json())
-        .then((pokemon) => {
+        .then(async (pokemon) => {
+            pokemon.moreInfo = await getPokemonEvolutions(pokemon);      
             return formatPokemonInfo(pokemon)
         });
     },

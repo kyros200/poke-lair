@@ -82,8 +82,8 @@ function PokemonDialog(props) {
             </QuestionModal>
             <Grid container>
                 {/* Left Side shows all Pokémon details */}
-                <Grid container item md={7} justify="flex-start" alignItems="center" direction="column">
-                    <Grid item>
+                <Grid container item md={7} justify="flex-start" alignItems="flex-start" direction="column">
+                    <Grid item style={{alignSelf:"center"}}>
                         <Typography style={{textTransform: 'capitalize'}} variant="h6">
                             {`${props.pokemon.dex} - ${props.pokemon.name}`}
                         </Typography>
@@ -94,12 +94,38 @@ function PokemonDialog(props) {
                                 <img height="16px" src={Type?.typeImgs[type]} alt={type} />
                             </Grid>
                         )}
+                        {props.pokemon?.details?.isLegendary &&
+                        <Grid item>
+                            <Typography variant="caption">Legendary</Typography>
+                        </Grid>
+                        }
                     </Grid>
-                    <Grid item>
+                    <Grid item style={{alignSelf:"center"}}>
                         <img
                             src={isShiny ? props.pokemon.sprites?.shiny : props.pokemon.sprites?.normal} 
                             alt={`${props.pokemon.name}`}>
                         </img>
+                    </Grid>
+                    <Grid item>
+                        <Typography variant="body2">{`${props.pokemon?.details?.flavorText}`}</Typography>
+                    </Grid>
+                    <br/>
+                    {props.pokemon?.details?.evolutions[0] &&
+                        <Grid item>
+                            <Typography variant="caption" style={{textTransform:"capitalize"}}>{`Next Evolution: ${props.pokemon?.details?.evolutions[0]}`}</Typography>
+                        </Grid>
+                    }
+                    <Grid item>
+                        <Typography variant="caption">{`H.:${props.pokemon?.details?.height * 10}cm - W.:${props.pokemon?.details?.weight/10}kg`}</Typography>
+                    </Grid>
+                    <Grid item>
+                        <Typography variant="caption">{`Growth Rate: ${props.pokemon?.details?.growthRate}`}</Typography>
+                    </Grid>
+                    <Grid item>
+                        <Typography variant="caption" style={{textTransform:"capitalize"}}>{`Abilities: ${props.pokemon?.details?.abilities.join(`, `)}`}</Typography>
+                    </Grid>
+                    <Grid item>
+                        <Typography variant="caption" style={{textTransform:"capitalize"}}>{``}</Typography>
                     </Grid>
                 </Grid>
                 {/* Right Side is where the user selects the desired options for his/her Pokémon to add to his team */}
