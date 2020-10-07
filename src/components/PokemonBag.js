@@ -16,7 +16,7 @@ function PokemonBag(props) {
         <Paper style={{ margin:"16px"}}>
             <Grid container item direction="column" justify="flex-start">
                 <Grid item xs={12}>
-                    <Typography variant="body1">{`Pokémon Team (${props.pokemonTeam.length}/6)`}</Typography>
+                    <Typography variant="body1">{`Pokemon Team (${props.pokemonTeam.length}/6)`}</Typography>
                 </Grid>
                 <Divider />
 
@@ -70,7 +70,7 @@ function PokemonBag(props) {
                 refuseFunction={() => setCheckoutModal(false)}
             >
                 <Typography >
-                    Are you sure you want this Pokémon team?
+                    Are you sure you want this Pokemon team?
                 </Typography>
                 {props.pokemonTeam.map((p) => 
                     <img src={p.sprite} alt="sprite" />

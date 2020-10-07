@@ -8,7 +8,7 @@ function PokemonFilter(props) {
             <Paper elevation={12}>
                 <TextField
                     fullWidth
-                    placeholder="Name ou Dex..."
+                    placeholder="Search Name..."
                     value={props.filter}
                     onChange={(e) => {
                         props.setFilter(e.target.value)

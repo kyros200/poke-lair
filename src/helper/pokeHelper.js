@@ -31,7 +31,7 @@ const formatPokemonInfo = (pokemon) => {
             height: pokemon.height,
             weight: pokemon.weight,
             abilities: pokemon.abilities.map((a) => a.ability.name),
-            flavorText: pokemon.moreInfo.flavorText.flavor_text,
+            flavorText: pokemon.moreInfo.flavorText,
             growthRate: pokemon.moreInfo.growthRate.name,
             isLegendary: pokemon.moreInfo.isLegendary,
         }
@@ -43,7 +43,7 @@ const getPokemonEvolutions = async (pokemon) => {
     const evolutionChain = await (await fetch(specie.evolution_chain.url)).json();
     
     let info = {
-        flavorText: specie.flavor_text_entries[0],
+        flavorText: specie.flavor_text_entries ? specie.flavor_text_entries[0].flavor_text : "",
         growthRate: specie.growth_rate,
         isLegendary: specie.is_legendary,
         evolutions: []
@@ -105,7 +105,7 @@ const pokeHelper = {
                     }
                 })
                 .filter((pokemon) => {
-                    return pokemon.dex < 810 //Get all Pokemons that is not from Galar (Thus, until Alola Region)
+                    return pokemon.dex < 808 //Get all Pokemons that is not from Galar (Thus, until Alola Region)
                 })
         });
     }

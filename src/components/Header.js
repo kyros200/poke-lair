@@ -5,7 +5,7 @@ import Type from '../helper/pokeTypeHelper';
 import logo from '../imgs/logo.png'
 
 function Header(props) {
-    const [selectedLanguage, setSelectedLanguage] = useState("classic");
+    const [selectedLanguage, setSelectedLanguage] = useState("galarian");
     const [selectedType, setSelectedType] = useState("normal");
 
     return (
@@ -69,13 +69,13 @@ function Header(props) {
                                 props.handleFontChange(e.target.value)
                             }}
                         >
-                            <MenuItem style={{ fontFamily: "galarian" }} value={"galarian"}>
-                                <Typography variant="caption">
+                            <MenuItem value={"galarian"}>
+                                <Typography variant="caption" style={{ fontFamily: "galarian" }}>
                                     Galarian
                                 </Typography>
                             </MenuItem>
-                            <MenuItem style={{ fontFamily: "classic" }} value={"classic"}>
-                                <Typography variant="caption">
+                            <MenuItem value={"classic"}>
+                                <Typography variant="caption" style={{ fontFamily: "classic" }}>
                                     English
                                 </Typography>
                             </MenuItem>

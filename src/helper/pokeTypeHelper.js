@@ -62,7 +62,78 @@ const typeStringList = [
 ];
 
 const typeThemes = {
-    //Under Construction...
+    normal:{
+        dark: "#aaaaaa",
+        main: "#A2A073"
+    },
+    dark:{
+        dark: "#aaaaaa",
+        main: "#705848"
+    },
+    bug:{
+        dark: "#aaaaaa",
+        main: "#A8B820"
+    },
+    fire:{
+        dark: "#aaaaaa",
+        main: "#F08030"
+    },
+    water:{
+        dark: "#aaaaaa",
+        main: "#6890F0"
+    },
+    ice:{
+        dark: "#aaaaaa",
+        main: "#98D8D8"
+    },
+    dragon:{
+        dark: "#aaaaaa",
+        main: "#7038F8"
+    },
+    electric:{
+        dark: "#aaaaaa",
+        main: "#F8D030"
+    },
+    psychic:{
+        dark: "#aaaaaa",
+        main: "#F85888"
+    },
+    steel:{
+        dark: "#aaaaaa",
+        main: "#B8B8D0"
+    },
+    ground:{
+        dark: "#aaaaaa",
+        main: "#E0C068"
+    },
+    fighting:{
+        dark: "#aaaaaa",
+        main: "#C03028"
+    },
+    fairy:{
+        dark: "#aaaaaa",
+        main: "#DEA5DE"
+    },
+    flying:{
+        dark: "#aaaaaa",
+        main: "#A890F0"
+    },
+    ghost:{
+        dark: "#aaaaaa",
+        main: "#705898"
+    },
+    grass:{
+        dark: "#aaaaaa",
+        main: "#78C850"
+    },
+    poison:{
+        dark: "#aaaaaa",
+        main: "#A040A0"
+    },
+    rock:{
+        dark: "#aaaaaa",
+        main: "#B8A038"
+    },
 }
 
 const typeHelper = {
